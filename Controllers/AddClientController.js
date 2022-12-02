@@ -1,6 +1,6 @@
 const AddClientSchema = require('../Schema/AddClientSchema');
 const AddClientFunction = async (req, res) => {
-  console.log(req.body);
+
   const {
     Bride_Name,
     Groom_Name,

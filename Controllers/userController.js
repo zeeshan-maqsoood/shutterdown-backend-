@@ -16,7 +16,8 @@ const RegisterPostRequest = async (req, res) => {
         password: password,
       });
 
-      res.status(200).json('You Are Registered! Successfully');
+      res.status(200).json({message:"You are Registered Successfully"});
+      console.log({message:"You are Registered Successfully",userData:user})
       await user.save();
     }
   } catch (error) {
@@ -32,11 +33,12 @@ const SignInPostRequest = async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
+ 
     if (
       loginUser.email === req.body.email &&
       loginUser.password === req.body.password
     ) {
-      res.status(200).json({ message: 'Login Successfully' });
+      res.status(200).json({ message: 'Login Successfully',User:loginUser });
     } else {
       res.status(404).json({ message: 'Invalid Credidfjdfdsf' });
     }
