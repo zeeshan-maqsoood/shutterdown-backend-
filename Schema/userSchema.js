@@ -14,9 +14,12 @@ const userSchema = mongoose.Schema({
   },
   phoneNo: {
     type: String,
-    
   },
   password: {
+    type: String,
+    required: true,
+  },
+  rollSelect: {
     type: String,
     required: true,
   },
