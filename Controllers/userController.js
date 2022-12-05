@@ -1,8 +1,9 @@
 const userSchema = require('../Schema/userSchema');
 
 const RegisterPostRequest = async (req, res) => {
+  console.log(req.body)
   try {
-    const { firstName, lastName, email, phoneNo, password } = req.body;
+    const { firstName, lastName, email, phoneNo, password,rollSelect } = req.body;
     const existEmail = await userSchema.findOne({ email: email });
     console.log(existEmail, 'existEmail');
     if (existEmail) {
@@ -14,10 +15,11 @@ const RegisterPostRequest = async (req, res) => {
         email: email,
         phoneNo: phoneNo,
         password: password,
+        rollSelect:rollSelect
       });
 
       res.status(200).json({message:"You are Registered Successfully"});
-      console.log({message:"You are Registered Successfully",userData:user})
+     
       await user.save();
     }
   } catch (error) {
