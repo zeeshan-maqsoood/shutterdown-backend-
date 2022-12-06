@@ -32,7 +32,8 @@ console.log(req.body,"body")
 };
 
 const AddMoreClientFunction = async (req, res) => {
-  console.log(req.body.array);
+  console.log(req.body);
+  const {id}=req.body.array[2]
   const { Bride_Name,
     Groom_Name,
     Bride_s_House_Address,
@@ -68,6 +69,7 @@ const AddMoreClientFunction = async (req, res) => {
       Booking_confirmed,
       Payment_Status,
       POC,
+      
       travelBySelect,
       photoGrapher,
       CinematographerSelect,
@@ -110,7 +112,7 @@ const AddMoreClientFunction = async (req, res) => {
   // }
   try {
     const client = await AddClientSchema({
-     Bride_Name,
+      Bride_Name,
       Groom_Name,
       Bride_s_House_Address,
       Groom_s_House_Address,
@@ -119,23 +121,26 @@ const AddMoreClientFunction = async (req, res) => {
       Booking_confirmed,
       Payment_Status,
       POC,
-      locationSelect,
-      travelBySelect,
-      photoGrapher,
-      CinematographerSelect,
-      droneSelect,
-      preWeddingSelect,
-      albumSelect,
-      AlbumType,
-      promoSelect,
-      longFilmSelect,
-      reelsSelect,
-      harddriveSelect,
-      // addDates,
-      eventType,
-      delieverable,
+      events: {
+        id,
+        locationSelect,
+        travelBySelect,
+        photoGrapher,
+        CinematographerSelect,
+        droneSelect,
+        preWeddingSelect,
+        albumSelect,
+        AlbumType,
+        promoSelect,
+        longFilmSelect,
+        reelsSelect,
+        harddriveSelect,
+        // addDates,
+        eventType,
+        delieverable,
+      },
     });
-    res.status(200).json('Client Added SucccessFully');
+    res.status(200).json({message:'Client Added SucccessFully',data:client});
     console.log("clientAddedSuccessfully")
     await client.save();
   } catch (error) {
