@@ -32,5 +32,5 @@ const ClientSchema = mongoose.Schema({
 
  
 });
-const ClientModel = mongoose.model('DummyClient', ClientSchema);
+const ClientModel = mongoose.model('Booking', ClientSchema);
 module.exports = ClientModel;

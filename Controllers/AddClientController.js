@@ -1,4 +1,7 @@
 const AddClientSchema = require('../Schema/AddClientSchema');
+const DummySchema=require("../Schema/DummySchema")
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://localhost:27017/';
 const AddClientFunction = async (req, res) => {
 console.log(req.body,"body")
   const {
@@ -32,8 +35,29 @@ console.log(req.body,"body")
 };
 
 const AddMoreClientFunction = async (req, res) => {
-  console.log(req.body);
-  const {id}=req.body.array[2]
+
+  
+ 
+  // locationSelect,
+  // travelBySelect,
+  // photoGrapher,
+  // CinematographerSelect,
+  // droneSelect,
+  // sameDaySelect,
+  // albumSelect,
+  // AlbumType,
+  // promoSelect,
+  // longFilmSelect,
+  // reelsSelect,
+  // harddriveSelect,
+  // eventType,
+  // radioDeliverables,
+  // clientSuggestions,
+  // dates,
+  // album2Type,
+  // album2Select,
+  // id,
+  // const {id}=req.body.array[2]
   const { Bride_Name,
     Groom_Name,
     Bride_s_House_Address,
@@ -42,49 +66,49 @@ const AddMoreClientFunction = async (req, res) => {
     PhoneNo,
     Booking_confirmed,
     Payment_Status,
-    POC,}=req.body.array[0]
+    POC,}=req.body
     
-  const {locationSelect,
-    travelBySelect,
-    photoGrapher,
-    CinematographerSelect,
-    droneSelect,
-    preWeddingSelect,
-    albumSelect,
-    AlbumType,
-    promoSelect,
-    longFilmSelect,
-    reelsSelect,
-    harddriveSelect,
-    addDates,
-    eventType,
-    delieverable}=req.body.array[1]
-    console.log(
-      Bride_Name,
-      Groom_Name,
-      Bride_s_House_Address,
-      Groom_s_House_Address,
-      Email_Id,
-      PhoneNo,
-      Booking_confirmed,
-      Payment_Status,
-      POC,
+  // const {locationSelect,
+  //   travelBySelect,
+  //   photoGrapher,
+  //   CinematographerSelect,
+  //   droneSelect,
+  //   preWeddingSelect,
+  //   albumSelect,
+  //   AlbumType,
+  //   promoSelect,
+  //   longFilmSelect,
+  //   reelsSelect,
+  //   harddriveSelect,
+  //   addDates,
+  //   eventType,
+  //   delieverable}=req.body.array[1]
+  //   console.log(
+  //     Bride_Name,
+  //     Groom_Name,
+  //     Bride_s_House_Address,
+  //     Groom_s_House_Address,
+  //     Email_Id,
+  //     PhoneNo,
+  //     Booking_confirmed,
+  //     Payment_Status,
+  //     POC,
       
-      travelBySelect,
-      photoGrapher,
-      CinematographerSelect,
-      droneSelect,
-      preWeddingSelect,
-      albumSelect,
-      AlbumType,
-      promoSelect,
-      longFilmSelect,
-      reelsSelect,
-      harddriveSelect,
-      addDates,
-      eventType,
-      delieverable,"dataaa"
-    );
+  //     travelBySelect,
+  //     photoGrapher,
+  //     CinematographerSelect,
+  //     droneSelect,
+  //     preWeddingSelect,
+  //     albumSelect,
+  //     AlbumType,
+  //     promoSelect,
+  //     longFilmSelect,
+  //     reelsSelect,
+  //     harddriveSelect,
+  //     addDates,
+  //     eventType,
+  //     delieverable,"dataaa"
+  //   );
     // Bride_Name,
     // Groom_Name,
     // Bride_s_House_Address,
@@ -121,28 +145,30 @@ const AddMoreClientFunction = async (req, res) => {
       Booking_confirmed,
       Payment_Status,
       POC,
-      events: {
-        id,
-        locationSelect,
-        travelBySelect,
-        photoGrapher,
-        CinematographerSelect,
-        droneSelect,
-        preWeddingSelect,
-        albumSelect,
-        AlbumType,
-        promoSelect,
-        longFilmSelect,
-        reelsSelect,
-        harddriveSelect,
-        // addDates,
-        eventType,
-        delieverable,
-      },
+      events: dummyData,
     });
     res.status(200).json({message:'Client Added SucccessFully',data:client});
     console.log("clientAddedSuccessfully")
+    
     await client.save();
+   MongoClient.connect(url, function (error, client) {
+     if (error) throw error;
+
+     // Select database
+     var dbo = client.db('ShutterDown');
+
+     // Drop the collection
+     dbo.collection('Dummies').drop(function (err, result) {
+       if (err) throw err;
+       if (result) console.log('Collection successfully deleted.');
+       c.close();
+     });
+   });
+ 
+
+
+    
+ 
   } catch (error) {
     console.log(error, 'error');
   }
