@@ -52,4 +52,53 @@ const DummyTableFunction = async (req, res) => {
     console.log(error, 'error');
   }
 }
-  module.exports={DummyTableFunction}
+const EditDummyTableFunction = async (req, res) => {
+console.log(req.params,"params")
+ const {
+   locationSelect,
+   travelBySelect,
+   photoGrapher,
+   CinematographerSelect,
+   droneSelect,
+   albumSelect,
+   promoSelect,
+   longFilmSelect,
+   reelsSelect,
+   harddriveSelect,
+   eventType,
+   clientSuggestions,
+ } = req.body;
+ try {
+  const dummyTable = await DummySchema.findById( { _id: req.params.id });
+
+ 
+ dummyTable.locationSelect=req.body.locationSelect
+ dummyTable.travelBySelect = travelBySelect;
+ dummyTable.photoGrapher = photoGrapher;
+ dummyTable.CinematographerSelect = CinematographerSelect;
+ dummyTable.droneSelect = droneSelect;
+ dummyTable.albumSelect = albumSelect;
+ dummyTable.promoSelect = promoSelect;
+  dummyTable.longFilmSelect = longFilmSelect;
+dummyTable.reelsSelect = reelsSelect;
+dummyTable.harddriveSelect = harddriveSelect;
+dummyTable.eventType = eventType;
+dummyTable.clientSuggestions = clientSuggestions;
+ 
+ const updatedData=await DummySchema.findByIdAndUpdate({_id:dummyTable._id},dummyTable)
+ if (updatedData) {
+  
+   res.status(200).json('YOur Data has been updated');
+ }
+    console.log(updatedData,"updatedData")
+
+
+  
+    
+  
+ } catch (error) {
+  res.status(500).json(error)
+  console.log(error,"error")
+ }
+};
+  module.exports = { DummyTableFunction, EditDummyTableFunction };

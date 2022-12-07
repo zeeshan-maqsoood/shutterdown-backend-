@@ -151,28 +151,13 @@ const AddMoreClientFunction = async (req, res) => {
     console.log("clientAddedSuccessfully")
     
     await client.save();
-   MongoClient.connect(url, function (error, client) {
-     if (error) throw error;
+  
 
-     // Select database
-     var dbo = client.db('ShutterDown');
-
-     // Drop the collection
-     dbo.collection('Dummies').drop(function (err, result) {
-       if (err) throw err;
-       if (result) console.log('Collection successfully deleted.');
-       c.close();
-     });
-   });
- 
-
-
-    
- 
   } catch (error) {
     console.log(error, 'error');
   }
 };
+
 module.exports = {
   AddClientFunction,
   AddMoreClientFunction,
