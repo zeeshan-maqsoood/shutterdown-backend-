@@ -36,8 +36,11 @@ console.log(req.body,"body")
 
 const AddMoreClientFunction = async (req, res) => {
 
-  
- 
+  console.log(req.body)
+  const array=[req.body.id,req.body.id2]
+ const Client = await DummySchema.find(Array
+ );
+ console.log(Client,"client")
   // locationSelect,
   // travelBySelect,
   // photoGrapher,
@@ -58,15 +61,7 @@ const AddMoreClientFunction = async (req, res) => {
   // album2Select,
   // id,
   // const {id}=req.body.array[2]
-  const { Bride_Name,
-    Groom_Name,
-    Bride_s_House_Address,
-    Groom_s_House_Address,
-    Email_Id,
-    PhoneNo,
-    Booking_confirmed,
-    Payment_Status,
-    POC,}=req.body
+  
     
   // const {locationSelect,
   //   travelBySelect,
@@ -134,28 +129,28 @@ const AddMoreClientFunction = async (req, res) => {
   //   eventType,
   //   delieverable,
   // }
-  try {
-    const client = await AddClientSchema({
-      Bride_Name,
-      Groom_Name,
-      Bride_s_House_Address,
-      Groom_s_House_Address,
-      Email_Id,
-      PhoneNo,
-      Booking_confirmed,
-      Payment_Status,
-      POC,
-      events: dummyData,
-    });
-    res.status(200).json({message:'Client Added SucccessFully',data:client});
-    console.log("clientAddedSuccessfully")
+  // try {
+  //   const client = await AddClientSchema({
+  //     Bride_Name,
+  //     Groom_Name,
+  //     Bride_s_House_Address,
+  //     Groom_s_House_Address,
+  //     Email_Id,
+  //     PhoneNo,
+  //     Booking_confirmed,
+  //     Payment_Status,
+  //     POC,
+  //     events: dummyData,
+  //   });
+  //   res.status(200).json({message:'Client Added SucccessFully',data:client});
+  //   console.log("clientAddedSuccessfully")
     
-    await client.save();
+  //   await client.save();
   
 
-  } catch (error) {
-    console.log(error, 'error');
-  }
+  // } catch (error) {
+  //   console.log(error, 'error');
+  // }
 };
 
 module.exports = {
