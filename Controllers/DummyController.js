@@ -102,4 +102,34 @@ dummyTable.clientSuggestions = clientSuggestions;
   console.log(error,"error")
  }
 };
-  module.exports = { DummyTableFunction, EditDummyTableFunction };
+const EditDummyDataTableId=async(req,res)=>{
+  console.log(req.params)
+try {
+  const idData = await DummySchema.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+      locationSelect: 'Lahodsfsdfdsffre',
+      travelBySelect: 'Bus',
+      photoGrapher: '1',
+      CinematographerSelect: 'ddfdfdfdf',
+      droneSelect: '2',
+      albumSelect: 'RGB',
+      promoSelect: 'Yes',
+      longFilmSelect: '1',
+      reelsSelect: '1',
+      harddriveSelect: '1',
+      eventType: 'sfsfdsdf',
+      clientSuggestions: 'sfsfsfsdfsdf',
+    }
+  );
+ 
+  
+} catch (error) {
+  
+}
+}
+  module.exports = {
+    DummyTableFunction,
+    EditDummyTableFunction,
+    EditDummyDataTableId,
+  };
