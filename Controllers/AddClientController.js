@@ -37,10 +37,12 @@ console.log(req.body,"body")
 const AddMoreClientFunction = async (req, res) => {
 
   console.log(req.body)
-  const array=[req.body.id,req.body.id2]
- const Client = await DummySchema.find(Array
- );
- console.log(Client,"client")
+  const array=req.body
+  console.log(array,"array")
+//   const array=[req.body.id,req.body.id2]
+//  const Client = await DummySchema.find(Array
+//  );
+//  console.log(Client,"client")
   // locationSelect,
   // travelBySelect,
   // photoGrapher,

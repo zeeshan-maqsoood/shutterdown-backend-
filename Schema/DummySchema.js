@@ -19,12 +19,8 @@ const dummySchema = mongoose.Schema({
   sameDaySelec: {
     type: String,
   },
-  albumSelect: {
-    type: String,
-  },
-  AlbumType: {
-    type: String,
-  },
+  albumArray: Array,
+
   promoSelect: {
     type: String,
   },
@@ -40,9 +36,9 @@ const dummySchema = mongoose.Schema({
   eventType: {
     type: String,
   },
-//   radioDeliverables: {
-//     type: String,
-//   },
+  //   radioDeliverables: {
+  //     type: String,
+  //   },
   clientSuggestions: {
     type: String,
   },
