@@ -45,7 +45,7 @@ const DummyTableFunction = async (req, res) => {
       // delieverable,
     });
     const addDummyData=await DummySchema.find()
-   
+   console.log(addDummyData,"addDummyData")
     res.status(200).json({message:'Client Added SucccessFully',data:dummyTable,allData:addDummyData});
     console.log("clientAddedSuccessfully")
     await dummyTable.save();
