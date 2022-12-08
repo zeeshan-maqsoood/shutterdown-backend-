@@ -1,6 +1,7 @@
 const DummySchema=require("../Schema/DummySchema")
 
 const DummyTableFunction = async (req, res) => {
+  console.log(req.body,"body")
   console.log(req.body.data.form2Data[0],"body");
 
   const {
@@ -32,17 +33,17 @@ const DummyTableFunction = async (req, res) => {
       CinematographerSelect,
       droneSelect,
       sameDaySelect,
-      // preWeddingSelect,
+      preWeddingSelect,
       albumArray,
       // AlbumType,
       promoSelect,
       longFilmSelect,
       reelsSelect,
       harddriveSelect,
-      // addDates,
+      addDates,
       eventType,
       clientSuggestions,
-      // delieverable,
+      delieverable,
     });
     const addDummyData=await DummySchema.find()
    console.log(addDummyData,"addDummyData")
