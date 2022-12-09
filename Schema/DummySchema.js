@@ -16,7 +16,10 @@ const dummySchema = mongoose.Schema({
   droneSelect: {
     type: String,
   },
-  sameDaySelec: {
+  sameDaySelect: {
+    type: String,
+  },
+  albumSelect: {
     type: String,
   },
   albumArray: Array,
@@ -36,6 +39,9 @@ const dummySchema = mongoose.Schema({
   eventType: {
     type: String,
   },
+  radioDeliverables: {
+    type: String,
+  },
   //   radioDeliverables: {
   //     type: String,
   //   },
@@ -45,15 +51,9 @@ const dummySchema = mongoose.Schema({
   dates: {
     type: String,
   },
-  album2Type: {
-    type: String,
-  },
-  clientSuggestions: {
-    type: String,
-  },
-  album2Select: {
-    type: String,
-  },
+
+ 
+
   id: {
     type: String,
   },

@@ -1,8 +1,11 @@
 const DummySchema=require("../Schema/DummySchema")
 
 const DummyTableFunction = async (req, res) => {
-  console.log(req.body,"body")
-  console.log(req.body.data.form2Data[0],"body");
+  // console.log(req.body,"body")
+  const array1=[req.body.data.form2Data[0]]
+  const array = [];
+  // console.log(req.body.data.form2Data[0],"body");
+  
 
   const {
     locationSelect,
@@ -11,6 +14,7 @@ const DummyTableFunction = async (req, res) => {
   CinematographerSelect,
   droneSelect,
   sameDaySelect,
+  albumSelect,
  albumArray,
   promoSelect,
   longFilmSelect,
@@ -20,7 +24,6 @@ const DummyTableFunction = async (req, res) => {
   radioDeliverables,
   clientSuggestions,
   dates,
-  
   id,
   }=req.body.data.form2Data[0]
   
@@ -33,20 +36,20 @@ const DummyTableFunction = async (req, res) => {
       CinematographerSelect,
       droneSelect,
       sameDaySelect,
-      preWeddingSelect,
+      albumSelect,
       albumArray,
-      // AlbumType,
       promoSelect,
       longFilmSelect,
       reelsSelect,
       harddriveSelect,
-      addDates,
       eventType,
+      radioDeliverables,
       clientSuggestions,
-      delieverable,
+      dates,
     });
+   
     const addDummyData=await DummySchema.find()
-   console.log(addDummyData,"addDummyData")
+  //  console.log(addDummyData,"addDummyData")
     res.status(200).json({message:'Client Added SucccessFully',data:dummyTable,allData:addDummyData});
     console.log("clientAddedSuccessfully")
     await dummyTable.save();
