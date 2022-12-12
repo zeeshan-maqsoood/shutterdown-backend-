@@ -3,8 +3,8 @@ const app = express();
 const userRouter = require('./Routes/userRoutes');
 const clientRouter=require("./Routes/AddClientRoutes")
 const viewClientRouter=require("./Routes/ViewClientRoutes")
-const previewClientRouter=require("./Routes/PreviewClientRoutes")
-
+const previewClientRouter=require("./Routes/MyProfileRoutes")
+const MyProfileRouter=require("./Routes/userRoutes")
 const Database = require('./DataBase/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -25,6 +25,7 @@ app.use('/', userRouter);
 app.use('/MyProfile', clientRouter);
 app.use("/",previewClientRouter)
 app.use("/",viewClientRouter)
+app.use("/", MyProfileRouter)
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });
