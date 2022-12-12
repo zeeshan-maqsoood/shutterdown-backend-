@@ -48,36 +48,58 @@ const DummyTableFunction = async (req, res) => {
       dates,
     });
    
-    const addDummyData=await DummySchema.find()
+    
   //  console.log(addDummyData,"addDummyData")
-    res.status(200).json({message:'Client Added SucccessFully',data:dummyTable,allData:addDummyData});
-    console.log("clientAddedSuccessfully")
-    await dummyTable.save();
+    let save=await dummyTable.save()
+    if (save) {
+      const addDummyData = await DummySchema.find();
+      res
+        .status(200)
+        .json({
+          message: 'Client Added SucccessFully',
+          data: dummyTable,
+          allData: addDummyData,
+        });
+      console.log('clientAddedSuccessfully');
+      console.log(addDummyData, 'addDummyData'); 
+    }
+     
+    
+   
   } catch (error) {
     console.log(error, 'error');
   }
 }
 const EditDummyTableFunction = async (req, res) => {
-console.log(req.params,"params")
- const {
-   locationSelect,
-   travelBySelect,
-   photoGrapher,
-   CinematographerSelect,
-   droneSelect,
-   albumSelect,
-   promoSelect,
-   longFilmSelect,
-   reelsSelect,
-   harddriveSelect,
-   eventType,
-   clientSuggestions,
- } = req.body;
- try {
-  const dummyTable = await DummySchema.findById( { _id: req.params.id });
-
+  console.log(req.body.data,"body")
+console.log(req.params.id,"params")
  
- dummyTable.locationSelect=req.body.locationSelect
+ try {
+  const {
+    locationSelect,
+    travelBySelect,
+    photoGrapher,
+    albumArray,
+    dates,
+    radioDeliverables,
+    CinematographerSelect,
+    droneSelect,
+    albumSelect,
+    promoSelect,
+    longFilmSelect,
+    reelsSelect,
+    harddriveSelect,
+    eventType,
+    clientSuggestions,
+    sameDaySelect,
+  } = req.body.data.updatedData;
+  const dummyTable = await DummySchema.findById(
+    { _id: req.body.data.id }
+  );
+
+// res.status(200).json("successfullyUPdated")
+ console.log(dummyTable,"dummyTable")
+ dummyTable.locationSelect=locationSelect
  dummyTable.travelBySelect = travelBySelect;
  dummyTable.photoGrapher = photoGrapher;
  dummyTable.CinematographerSelect = CinematographerSelect;
