@@ -35,6 +35,49 @@ const userSchema = mongoose.Schema({
   primaryDetails:{
     firstName:{
       type:String
+    },
+    LastName:{
+      type:String,
+    },
+    Gender:{
+      type:String
+    },
+    DOB:{
+type:String
+    },
+    BloodGroup:{
+type:String
+    },
+    maritalStatus:{
+      type:String
+    },
+  physicalHandicaped:{
+    type:String,
+  }
+  },
+  ContactDetails:{
+    workEmail:{
+      type:String
+    },
+    PersonalEmail:{
+      type:String
+    },
+    MobilePhone:{
+      type:String
+    },
+    workPhone:{
+      type:String
+    },
+    AddressDetails:{
+      currentAddress:{
+        type:String
+      },
+      permanentAddress:{
+        type:String
+      },
+      Experience:{
+        type:String
+      }
     }
   }
 });
