@@ -1,8 +1,10 @@
  const userModel=require('../Schema/userSchema')
 
 const ProfileHeaderFunction=async(req,res)=>{
+  console.log(req.params,"params")
 try {
-    const user=await userModel.find()
+    const user=await userModel.findById({_id:req.params.id})
+    console.log(user,"user")
     if (user) {
         res.status(200).json({message:"Api send",data:user})
     }

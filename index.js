@@ -6,6 +6,7 @@ const viewClientRouter=require("./Routes/ViewClientRoutes")
 const previewClientRouter=require("./Routes/MyProfileRoutes")
 const MyProfileRouter=require("./Routes/userRoutes")
 const ClientListViewRouter=require('./Routes/ClientListVIewRoutes')
+const ClientViewRouter=require("./Routes/CalenderViewRoutes")
 const Database = require('./DataBase/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -28,6 +29,7 @@ app.use("/",previewClientRouter)
 app.use("/",viewClientRouter)
 app.use("/", MyProfileRouter)
 app.use("/",ClientListViewRouter)
+app.use("/",ClientViewRouter)
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });
