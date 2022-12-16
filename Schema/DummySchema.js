@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const dummySchema = mongoose.Schema({
+  
   locationSelect: {
     type: String,
   },

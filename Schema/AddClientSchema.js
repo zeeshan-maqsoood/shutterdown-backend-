@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const ClientSchema = mongoose.Schema({
+  userID: {
+    type: String,
+  },
   Bride_Name: {
     type: String,
   },
@@ -28,9 +31,7 @@ const ClientSchema = mongoose.Schema({
   POC: {
     type: String,
   },
- events:Array
-
- 
+  events: Array,
 });
 const ClientModel = mongoose.model('Booking', ClientSchema);
 module.exports = ClientModel;

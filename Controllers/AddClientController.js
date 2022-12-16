@@ -40,6 +40,7 @@ const AddMoreClientFunction = async (req, res) => {
   
   try {
     const {
+      userEmail,
       Bride_Name,
       Groom_Name,
       Bride_s_House_Address,
@@ -51,7 +52,7 @@ const AddMoreClientFunction = async (req, res) => {
       POC,
     } = req.body.data.info1;
 
-    
+    const userID=userEmail
     const array = req.body.data.info2;
 
     let DataBaseId = [];
@@ -95,6 +96,7 @@ const AddMoreClientFunction = async (req, res) => {
     // // } = dummyDataArray;
     // console.log(dummyDataArray, 'dummyData');
     const client = await AddClientSchema({
+      userID,
       Bride_Name,
       Groom_Name,
       Bride_s_House_Address,
