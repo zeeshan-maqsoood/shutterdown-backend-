@@ -4,7 +4,7 @@ const ProfileHeaderFunction=async(req,res)=>{
 try {
     const user=await userModel.find()
     if (user) {
-        res.status(200).json("Your Data are Send")
+        res.status(200).json({message:"Api send",data:user})
     }
 } catch (error) {
     res.status(404).json(error)
