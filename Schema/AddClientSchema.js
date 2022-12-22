@@ -32,6 +32,10 @@ const ClientSchema = mongoose.Schema({
     type: String,
   },
   events: Array,
+  photoGrapherName:Array,
+  cinematoGrapher:Array,
+  DroneFlyer:Array,
+  
 });
 const ClientModel = mongoose.model('Booking', ClientSchema);
 module.exports = ClientModel;
