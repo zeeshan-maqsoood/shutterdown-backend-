@@ -8,6 +8,7 @@ const MyProfileRouter = require('./Routes/userRoutes');
 const GetCalenderListRoutes = require('./Routes/GetCalenderListRoutes');
 const ClientListViewRouter = require('./Routes/ClientListVIewRoutes');
 const ClientViewRouter = require('./Routes/CalenderViewRoutes');
+const DeliverableRouter=require('./Routes/DeliverableRoutes')
 const Database = require('./DataBase/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -34,6 +35,7 @@ app.use('/', ClientListViewRouter);
 app.use('/', ClientViewRouter);
 app.use('/', GetCalenderListRoutes);
 app.use("/",CalenderRouter)
+app.use("/",DeliverableRouter)
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });
