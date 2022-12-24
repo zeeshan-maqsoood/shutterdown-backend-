@@ -8,5 +8,9 @@ router.get(
   '/MyProfile/Deliverables/Cinematography',
   delivarableController.getEditorRule
 );
+router.get(
+  '/MyProfile/Deliverables/Albums/:id',
+  delivarableController.getCinematographerData
+);
 
 module.exports=router
