@@ -13,5 +13,5 @@ router.get(
   '/MyProfile/Client/ParticularClient/ShootDetails/:id',
   CalenderListView.clientSpecificEvents
 );
-
+router.get('/MyProfile/PreWedShoot/PreWedShootScreen/:id',CalenderListView.preWeddingShoot );
 module.exports = router;

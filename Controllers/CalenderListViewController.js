@@ -242,8 +242,24 @@ const clientSpecificEvents = async (req, res) => {
     res.status(404).json(error, 'error');
   }
 };
+const preWeddingShoot = async (req, res) => {
+  console.log(req.params, 'parmas');
+  try {
+    const data = await addClientSchema.find({
+      userID: req.params.id,
+      checkBox:[]
+    });
+    console.log(data, 'data');
+    res.status(200).json(data);
+    console.log(data, 'datasss');
+    console.log('dfsdfsf');
+  } catch (error) {
+    res.status(404).json(error, 'error');
+  }
+};
 module.exports = {
   ClientListViewController,
   postClientListViewController,
   clientSpecificEvents,
+  preWeddingShoot,
 };

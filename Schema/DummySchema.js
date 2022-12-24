@@ -43,6 +43,7 @@ const dummySchema = mongoose.Schema({
   radioDeliverables: {
     type: String,
   },
+  checkboxValues:Array,
   //   radioDeliverables: {
   //     type: String,
   //   },
