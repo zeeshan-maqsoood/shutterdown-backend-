@@ -4,34 +4,36 @@ const DummyTableFunction = async (req, res) => {
   // console.log(req.body,"body")
   const array1=[req.body.data.form2Data[0]]
   const array = [];
+  console.log(array1,"array1");
   // console.log(req.body.data.form2Data[0],"body");
   
 
   const {
     locationSelect,
-  travelBySelect,
-  photoGrapher,
-  CinematographerSelect,
-  droneSelect,
-  sameDaySelect,
-  albumSelect,
- albumArray,
-  promoSelect,
-  longFilmSelect,
-  reelsSelect,
-  harddriveSelect,
-  eventType,
-  radioDeliverables,
-  clientSuggestions,
-  dates,
-  droneFlyerName,
-  photoGrapherName,
-  cinematoGrapherName,
-  shootDirectorName,
-  managerName,
-  assistantName,
-  id,
-  }=req.body.data.form2Data[0]
+    travelBySelect,
+    photoGrapher,
+    CinematographerSelect,
+    droneSelect,
+    sameDaySelect,
+    albumSelect,
+    albumArray,
+    promoSelect,
+    longFilmSelect,
+    reelsSelect,
+    harddriveSelect,
+    eventType,
+    radioDeliverables,
+    clientSuggestions,
+    dates,
+    droneFlyerName,
+    photoGrapherName,
+    cinematoGrapherName,
+    shootDirectorName,
+    managerName,
+    assistantName,
+    id,
+    sameVideoSelect,
+  } = req.body.data.form2Data[0];
   
   try {
     const dummyTable = await DummySchema({
@@ -57,7 +59,8 @@ const DummyTableFunction = async (req, res) => {
       cinematoGrapherName,
       shootDirectorName,
       managerName,
-      assistantName
+      assistantName,
+      sameVideoSelect,
     });
    
     

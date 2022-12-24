@@ -55,6 +55,10 @@ const dummySchema = mongoose.Schema({
   id: {
     type: String,
   },
+  sameVideoSelect:{
+    type:String
+  },
+  
   droneFlyerName: Array,
   photoGrapherName: Array,
   cinematoGrapherName: Array,

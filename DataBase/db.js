@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const DB = 'mongodb+srv://shutterdown:shutterdown@cluster0.nxvrn7f.mongodb.net/test';
+// const DB = 'mongodb+srv://shutterdown:shutterdown@cluster0.nxvrn7f.mongodb.net/test';
+const DB = 'mongodb://localhost:27017/ShutterDown';
 
 mongoose
   .connect(DB, {
