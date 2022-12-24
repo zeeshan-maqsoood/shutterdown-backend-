@@ -18,11 +18,23 @@ const bodyParser = require('body-parser');
 const userSchema = require('./Schema/userSchema');
 const ClientSchema = require('./Schema/AddCalenderViewSchema');
 const CalenderRouter=require("./Routes/AddCalenderViewRoutes")
+const path = require('path'); 
+
 dotenv.config({ path: './config.env' });
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

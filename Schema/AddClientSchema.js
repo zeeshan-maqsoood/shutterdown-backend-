@@ -16,10 +16,10 @@ const ClientSchema = mongoose.Schema({
   Groom_s_House_Address: {
     type: String,
   },
-  phone_No: {
+  phone_Number: {
     type: String,
   },
-  Email_Id: {
+  EmailID: {
     type: String,
   },
   Booking_confirmed: {
