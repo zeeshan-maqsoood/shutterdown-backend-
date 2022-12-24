@@ -24,6 +24,12 @@ const DummyTableFunction = async (req, res) => {
   radioDeliverables,
   clientSuggestions,
   dates,
+  droneFlyerName,
+  photoGrapherName,
+  cinematoGrapherName,
+  shootDirectorName,
+  managerName,
+  assistantName,
   id,
   }=req.body.data.form2Data[0]
   
@@ -46,6 +52,12 @@ const DummyTableFunction = async (req, res) => {
       radioDeliverables,
       clientSuggestions,
       dates,
+      droneFlyerName,
+      photoGrapherName,
+      cinematoGrapherName,
+      shootDirectorName,
+      managerName,
+      assistantName
     });
    
     
@@ -92,13 +104,18 @@ console.log(req.params.id,"params")
     eventType,
     clientSuggestions,
     sameDaySelect,
+    droneFlyerName,
+    photoGrapherName,
+    cinematoGrapherName,
+    shootDirectorName,
+    managerName,
+    assistantName,
   } = req.body.data.updatedData;
   const dummyTable = await DummySchema.findById(
     { _id: req.body.data.id }
   );
 
 // res.status(200).json("successfullyUPdated")
- console.log(dummyTable,"dummyTable")
  dummyTable.locationSelect=locationSelect
  dummyTable.travelBySelect = travelBySelect;
  dummyTable.photoGrapher = photoGrapher;
@@ -111,7 +128,12 @@ dummyTable.reelsSelect = reelsSelect;
 dummyTable.harddriveSelect = harddriveSelect;
 dummyTable.eventType = eventType;
 dummyTable.clientSuggestions = clientSuggestions;
- 
+ dummyTable.photoGrapherName = photoGrapherName
+ dummyTable.droneFlyerName = droneFlyerName
+ dummyTable.cinematoGrapherName = cinematoGrapherName
+ dummyTable.shootDirectorName = shootDirectorName
+ dummyTable.managerName = managerName
+ dummyTable.assistantName = assistantName
  const updatedData=await DummySchema.findByIdAndUpdate({_id:dummyTable._id},dummyTable)
  if (updatedData) {
   

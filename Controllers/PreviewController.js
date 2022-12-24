@@ -10,7 +10,7 @@ const PreviewClientFunction = async (req, res) => {
     for (let index = 0; index < arrayId.length; index++) {
         const element = arrayId[index];
         const dummyIdData=await dummySchema.findById({_id:element.ID})
-       DummyIDArray.push(dummyIdData)
+        DummyIDArray.push(dummyIdData)
        }
        console.log(DummyIDArray,"DummyArray")
    res.status(200).json({data:DummyIDArray})

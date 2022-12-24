@@ -52,12 +52,15 @@ const dummySchema = mongoose.Schema({
   dates: {
     type: String,
   },
-
- 
-
   id: {
     type: String,
   },
+  droneFlyerName: Array,
+  photoGrapherName: Array,
+  cinematoGrapherName: Array,
+  shootDirectorName: Array,
+  managerName: Array, 
+  assistantName: Array, 
 });
 
 const DummyModel = mongoose.model('Dummy', dummySchema);

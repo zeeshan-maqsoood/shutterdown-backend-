@@ -5,11 +5,9 @@ const ClientListViewController = async (req, res) => {
     const clientEvents = await addClientSchema.find({
       userID: req.params.id,
     });
-    console.log(clientEvents, 'clientEvents');
     const shooterData = await userSchema.find({
       rollSelect: 'Shooter',
     });
-    console.log(shooterData, 'shooterData');
     let data = [];
     for (let i = 0; i < shooterData.length; i++) {
       data.push({
@@ -22,11 +20,24 @@ const ClientListViewController = async (req, res) => {
         checked: false,
       });
     }
-
+    const managerData = await userSchema.find({
+      rollSelect: 'Manager',
+    });
+    let data_ = [];
+    for (let i = 0; i < managerData.length; i++) {
+      data_.push({
+        firstName: managerData[i].firstName,
+        lastName: managerData[i].lastName,
+        email: managerData[i].email,
+        phoneNo: managerData[i].phoneNo,
+      });
+    }
+    console.log('clientEvents',clientEvents)
     res.status(200).json({
       message: 'recieve Successfully',
       data: clientEvents,
       userData: data,
+      managerData:data_
     });
   } catch (error) {
     res.status(500).json('not added');

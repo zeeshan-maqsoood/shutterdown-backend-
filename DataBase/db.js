@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB = 'mongodb://localhost:27017/ShutterDown';
+const DB = 'mongodb+srv://shutterdown:shutterdown@cluster0.nxvrn7f.mongodb.net/test';
 
 mongoose
   .connect(DB, {
@@ -9,6 +9,6 @@ mongoose
   .then(() => {
     console.log('DataBase Connected');
   })
-  .catch(() => {
-    console.log('DataBase not Connected');
+  .catch((error) => {
+    console.log('DataBase not Connected',error);
   });
