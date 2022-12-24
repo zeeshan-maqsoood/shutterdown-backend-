@@ -33,6 +33,7 @@ const DummyTableFunction = async (req, res) => {
     assistantName,
     id,
     sameVideoSelect,
+    checkboxValues
   } = req.body.data.form2Data[0];
   
   try {
@@ -61,6 +62,7 @@ const DummyTableFunction = async (req, res) => {
       managerName,
       assistantName,
       sameVideoSelect,
+      checkboxValues
     });
    
     
