@@ -18,14 +18,14 @@ const bodyParser = require('body-parser');
 const userSchema = require('./Schema/userSchema');
 const ClientSchema = require('./Schema/AddCalenderViewSchema');
 const CalenderRouter=require("./Routes/AddCalenderViewRoutes")
-const path = require('path'); 
-
 dotenv.config({ path: './config.env' });
+const PORT = process.env.PORT
+const path = require('path'); 
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// if(process.env.NODE_ENV)
+
 app.use(express.static(path.join(__dirname, "../Shutterdown-Frontend/build")));
 app.get("*", function (_, res) {
   res.sendFile(
@@ -54,7 +54,7 @@ app.use("/",DeliverableRouter)
 //   res.send('Hello world');
 // });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   try {
     console.log(`Server is running at port 5000`);
   } catch (error) {
