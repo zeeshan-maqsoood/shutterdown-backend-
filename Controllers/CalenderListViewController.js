@@ -44,6 +44,25 @@ const ClientListViewController = async (req, res) => {
     res.status(500).json('not added');
   }
 };
+
+const managerList = async (req,res) => {
+  const managerData = await userSchema.find({
+    rollSelect: 'Manager',
+  });
+  let data_ = [];
+  for (let i = 0; i < managerData.length; i++) {
+    data_.push({
+      firstName: managerData[i].firstName,
+      lastName: managerData[i].lastName,
+      email: managerData[i].email,
+      phoneNo: managerData[i].phoneNo,
+    });
+  }
+  res.status(200).json({
+    message: 'recieve Successfully',
+    managerData: data_,
+  });
+}
 const postClientListViewController = async (req, res) => {
   // console.log(req,"params")
   console.log(req.body.data.event, 'body');
@@ -262,4 +281,5 @@ module.exports = {
   postClientListViewController,
   clientSpecificEvents,
   preWeddingShoot,
+  managerList
 };
