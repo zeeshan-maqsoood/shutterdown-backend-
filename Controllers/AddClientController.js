@@ -1,7 +1,7 @@
 const AddClientSchema = require('../Schema/AddClientSchema');
 const DummySchema = require('../Schema/DummySchema');
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/';
+// var url = 'mongodb://localhost:27017/';
 const AddClientFunction = async (req, res) => {
   console.log(req.body, 'body');
   const {
