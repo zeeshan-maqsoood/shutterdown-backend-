@@ -6,8 +6,8 @@
 	ignorecase = true
 	precomposeunicode = true
 [remote "origin"]
-	url = https://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@github.com/webappsoft-alt/shutterdown-backend-.git
+	url = https://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@github.com/zeeshan-maqsoood/Shutterdown-Backend.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "main"]
+[branch "master"]
 	remote = origin
 	merge = refs/heads/master
