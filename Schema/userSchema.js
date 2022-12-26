@@ -32,13 +32,10 @@ const userSchema = mongoose.Schema({
   interestAndHobbies:{
     type:String
   },
-  primaryDetails:{
-    firstName:{
-      type:String
-    },
-    LastName:{
-      type:String,
-    },
+  middleName:{
+    type:String,
+  },
+   
     Gender:{
       type:String
     },
@@ -53,22 +50,13 @@ type:String
     },
   physicalHandicaped:{
     type:String,
-  }
   },
-  ContactDetails:{
     workEmail:{
-      type:String
-    },
-    PersonalEmail:{
-      type:String
-    },
-    MobilePhone:{
       type:String
     },
     workPhone:{
       type:String
     },
-    AddressDetails:{
       currentAddress:{
         type:String
       },
@@ -78,8 +66,8 @@ type:String
       Experience:{
         type:String
       }
-    }
-  }
+    
+  
 });
 const userModel = mongoose.model('user', userSchema);
 module.exports = userModel;
