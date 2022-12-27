@@ -108,7 +108,7 @@ console.log(req.body,"body")
      const userID = await userModel.findByIdAndUpdate(
        { _id: req.params.id },
        {
-         Experience: req.body.experience.current_address,
+         Experience: req.body.experienceValue.experience,
          
        }
      );
