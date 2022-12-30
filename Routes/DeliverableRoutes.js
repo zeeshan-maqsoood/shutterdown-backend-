@@ -10,7 +10,14 @@ router.get(
 );
 router.get(
   '/MyProfile/Deliverables/Albums/:id',
-  delivarableController.getCinematographerData
+  delivarableController.albumsData
 );
-
+router.get(
+  '/MyProfile/Deliverables/Photos/:id',
+  delivarableController.getPhotosDataa
+);
+router.post(
+  '/MyProfile/Deliverables/Cinematography',
+  delivarableController.DeliverableDataPost
+);
 module.exports=router

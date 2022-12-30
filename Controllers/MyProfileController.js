@@ -1,4 +1,5 @@
- const userModel=require('../Schema/userSchema')
+ const { findByIdAndUpdate } = require('../Schema/userSchema')
+const userModel=require('../Schema/userSchema')
 
 const ProfileHeaderFunction=async(req,res)=>{
   console.log(req.params,"params")
@@ -119,8 +120,42 @@ console.log(req.body,"body")
    } catch (error) {}
  }
 }
+
+const jobValueFunction=async(req,res)=>{
+  console.log(req.params,"params")
+  const {employee_number,date_of_joining,job_title,job_type,shift_timing,leave_plan}=req.body.jobValue
+try {
+  const jobValue = await userModel.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+     EmployeeNumber:employee_number,
+     DateOfJoining:date_of_joining,
+       jobTitle:job_title,
+     jobType:job_type,
+      shiftTiming:shift_timing,
+     leavePlan:leave_plan
+    }
+  );
+   console.log(jobValue,"jobValue")
+//   const jobValue=await userModel({
+// EmployeeNumber:employee_number,
+// DateOfJoining:date_of_joining,
+// jobTitle:job_title,
+// jobType:job_type,
+// shiftTiming:shift_timing,
+// leavePlan:leave_plan
+
+
+//   })
+  res.status(200).json(jobValue)
+} catch (error) {
+  res.status(404).json("not posted")
+}
+}
+
 module.exports = {
   ProfileHeaderFunction,
   UpdateManagerFunction,
   ProfileUpdateFunction,
+  jobValueFunction
 };

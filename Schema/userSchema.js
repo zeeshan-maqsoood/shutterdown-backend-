@@ -65,6 +65,24 @@ type:String
       },
       Experience:{
         type:String
+      },
+      EmployeeNumber:{
+        type:String
+      },
+      DateOfJoining:{
+        type:String
+      },
+      JobTitle:{
+        type:String
+      },
+      jobType:{
+        type:String
+      },
+      shiftTiming:{
+        type:String
+      },
+      leavePlan:{
+        type:String
       }
     
   

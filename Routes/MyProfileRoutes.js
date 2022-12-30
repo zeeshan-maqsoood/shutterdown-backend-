@@ -4,4 +4,5 @@ const myProfileRouter=require('../Controllers/MyProfileController')
 router.get("/MyProfile/Profile/:id",myProfileRouter.ProfileHeaderFunction)
 router.put('/MyProfile/About/:id',myProfileRouter.UpdateManagerFunction);
 router.put('/MyProfile/Profile/:id', myProfileRouter.ProfileUpdateFunction);
+router.put("/MyProfile/Job/:id",myProfileRouter.jobValueFunction)
 module.exports=router

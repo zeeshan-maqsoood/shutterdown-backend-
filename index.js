@@ -10,6 +10,7 @@ const ClientListViewRouter = require('./Routes/ClientListVIewRoutes');
 // const ListViewSave = require('./Routes/ListViewSaveRoutes');
 const ClientViewRouter = require('./Routes/CalenderViewRoutes');
 const DeliverableRouter=require('./Routes/DeliverableRoutes')
+const DailyTaskRouter = require('./Routes/DailyTaskRoutes');
 const Database = require('./DataBase/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -17,6 +18,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const userSchema = require('./Schema/userSchema');
 const ClientSchema = require('./Schema/AddCalenderViewSchema');
+
 const CalenderRouter=require("./Routes/AddCalenderViewRoutes")
 dotenv.config({ path: './config.env' });
 const PORT = process.env.PORT
@@ -41,6 +43,7 @@ app.use('/', GetCalenderListRoutes);
 app.use("/",CalenderRouter)
 // app.use("/",ListViewSave)
 app.use("/",DeliverableRouter)
+app.use("/",DailyTaskRouter)
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });

@@ -1,35 +1,75 @@
 const mongoose=require("mongoose")
 
-const CalenderData=mongoose.Schema({
-    CoupleLocation:{
-        type:String,
+const CalenderData = mongoose.Schema({
+  cinematoGrapher: {
+    userID:{
+      type:String,
     },
-    Date:{
-        type:String,
+    eventsId:{
+      type:String
     },
-    shootDirector:{
-        type:String
+    client: {
+      type: String,
     },
-    photoGrapher:{
-        type:String
+    Deliverable: {
+      type: String,
     },
-    cinematoGrapher:{
-        type:String
+    Editor: {
+      type: String,
     },
-    DroneFlyer:{
-        type:String
-    },
-    Manager:{
+    WeddingData: {
         type:String
     },
-    Assistant:{
-        type:String
-    },SameDayVideos:{
-        type:String
-    },sameDayPhoto:{
-        type:String
-    }
-})
+    companyDeadline: {
+      type: String,
+    },
+    ClientDeadline: {
+      type: String,
+    },
+    Status: {
+      type: String,
+    },
+    Suggestions: {
+      type: String,
+    },
+    ClientRevision: {
+      type: String,
+    },
+  },
+  photoGrapher: {
+    client: {
+      type: String,
+    },
+    Deliverable: {
+      type: String,
+    },
+    Editor: {
+      type: String,
+    },
+    WeddingData: {},
+    companyDeadline: {
+      type: String,
+    },
+    ClientDeadline: {
+      type: String,
+    },
+    Status: {
+      type: String,
+    },
+    Suggestions: {
+      type: String,
+    },
+    ClientRevision: {
+      type: String,
+    },
+  },
+  Albums:{
+    client:{
+      type:String
+    },
+  },
+
+});
 
 const ClientModel=mongoose.model("AssignTeam",CalenderData)
 
