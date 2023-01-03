@@ -12,6 +12,7 @@ const ClientListViewController = async (req, res) => {
     let data = [];
     for (let i = 0; i < shooterData.length; i++) {
       data.push({
+        _id:shooterData[i]._id,
         firstName: shooterData[i].firstName,
         lastName: shooterData[i].lastName,
         email: shooterData[i].email,
@@ -27,6 +28,7 @@ const ClientListViewController = async (req, res) => {
     let data_ = [];
     for (let i = 0; i < managerData.length; i++) {
       data_.push({
+        _id:managerData[i]._id,
         firstName: managerData[i].firstName,
         lastName: managerData[i].lastName,
         email: managerData[i].email,
