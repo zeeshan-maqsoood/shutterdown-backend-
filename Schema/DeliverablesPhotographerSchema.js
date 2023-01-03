@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
 const CalenderData = mongoose.Schema({
-
+  
+  
     userID: {
       type: String,
     },
@@ -16,6 +16,7 @@ const CalenderData = mongoose.Schema({
         type: String,
       },
     },
+
     // Deliverable: {
     //   type: String,
     // },
@@ -28,23 +29,22 @@ const CalenderData = mongoose.Schema({
     companyDate: {
       type: String,
     },
-    ClientDate: {
+    clientDate: {
       type: String,
     },
     Status: {
       type: String,
     },
-
+    // Suggestions: {
+    //   type: String,
+    // },
     ClientRevision: {
       type: String,
     },
-    commonId:{
-      type:String
-    }
   
- 
+
 });
 
-const ClientModel = mongoose.model('AssignTeam', CalenderData);
+const ClientModel = mongoose.model('PhotoGrapherDeliverable', CalenderData);
 
 module.exports = ClientModel;

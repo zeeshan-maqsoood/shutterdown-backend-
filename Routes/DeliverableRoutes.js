@@ -20,4 +20,10 @@ router.post(
   '/MyProfile/Deliverables/Cinematography',
   delivarableController.DeliverableDataPost
 );
+router.post(
+  '/MyProfile/Deliverables/Photos',
+  delivarableController.PhotosDeliverableData
+);
+router.post('/MyProfile/Deliverables/Albums',delivarableController.AlbumsPostData)
+router.get('/MyProfile/Client/ParticularClient/Deliverable/:id',delivarableController.DeliverableData);
 module.exports=router

@@ -45,7 +45,7 @@ const ClientListViewController = async (req, res) => {
   }
 };
 
-const managerList = async (req,res) => {
+const managerList = async (req, res) => {
   const managerData = await userSchema.find({
     rollSelect: 'Manager',
   });
@@ -62,10 +62,10 @@ const managerList = async (req,res) => {
     message: 'recieve Successfully',
     managerData: data_,
   });
-}
+};
 const postClientListViewController = async (req, res) => {
   // console.log(req,"params")
-  console.log(req.body.data.event, 'body');
+  console.log(req.body.data, 'body');
   const {
     _id,
     locationSelect,
@@ -90,14 +90,14 @@ const postClientListViewController = async (req, res) => {
     managerName,
     assistantName,
   } = req.body.data;
-  console.log(req.body.data.event.managerName, 'bodydgfdfdf');
+  // console.log(req.body.data.event.managerName, 'bodydgfdfdf');
   try {
     const clientEvents = await addClientSchema.findById({
       _id: req.body.data.clientId,
     });
     for (let index = 0; index < clientEvents.events.length; index++) {
       const element = clientEvents.events[index];
-      console.log(element._id);
+      console.log(element, 'element');
       console.log(req.body.data.eventId);
       if (element._id == req.body.data.eventId) {
         const data = clientEvents.events.filter((data) => {
@@ -127,7 +127,7 @@ const postClientListViewController = async (req, res) => {
           managerName,
           assistantName,
         } = data[0];
-        console.log(locationSelect, 'locationSelect');
+        console.log(req.body.data.clientId, 'locationSelect');
         //  console.log(data[0]._id, 'data');
         const dataUpdated = await addClientSchema.findOneAndUpdate(
           {
@@ -191,7 +191,7 @@ const postClientListViewController = async (req, res) => {
           managerName: managerName,
           assistantName: assistantName,
         };
-        console.log(updatedData, 'updatedclients');
+        // console.log(updatedData, 'updatedclients');
         //  const updatedClients = await addClientSchema.findById(_id:);
         //  console.log(updatedClients,"updatedClient")
       }
@@ -205,6 +205,121 @@ const postClientListViewController = async (req, res) => {
     // })
     // console.log(clientEvents, 'clientEventssa');
   } catch (error) {}
+  // try {
+
+  //   // const clientEvents = await addClientSchema.findById({
+  //   //   _id: req.body.data.clientId,
+  //   // });
+  //   for (let index = 0; index < clientEvents.events.length; index++) {
+  //     const element = clientEvents.events[index];
+  //     console.log(element,"element");
+  //     console.log(req.body.data.eventId);
+  //     if (element._id == req.body.data.eventId) {
+  //       const data = clientEvents.events.filter((data) => {
+  //         return data._id === req.body.data.eventId;
+  //       });
+  //       const {
+  //         _id,
+  //         locationSelect,
+  //         travelBySelect,
+  //         photoGrapher,
+  //         CinematographerSelect,
+  //         droneSelect,
+  //         sameDaySelect,
+  //         albumSelect,
+  //         albumArray,
+  //         promoSelect,
+  //         longFilmSelect,
+  //         reelsSelect,
+  //         harddriveSelect,
+  //         eventType,
+  //         clientSuggestions,
+  //         dates,
+  //         droneFlyerName,
+  //         photoGrapherName,
+  //         cinematoGrapherName,
+  //         shootDirectorName,
+  //         managerName,
+  //         assistantName,
+  //       } = data[0];
+  //       console.log(locationSelect, 'locationSelect');
+  //       //  console.log(data[0]._id, 'data');
+  //       const dataUpdated = await addClientSchema.findOneAndUpdate(
+  //         {
+  //           _id: req.body.data.clientId,
+  //           'events._id': req.body.data.eventId,
+  //         },
+  //         {
+  //           $set: {
+  //             'events.$.locationSelect': req.body.data.event.locationSelect,
+  //             'events.$.travelBySelect': req.body.data.event.travelBySelect,
+  //             'events.$.photoGrapher': req.body.data.event.photoGrapher,
+  //             'events.$.CinematographerSelect':
+  //               req.body.data.event.CinematographerSelect,
+  //             'events.$.droneSelect': req.body.data.event.droneSelect,
+  //             'events.$.sameDaySelect': req.body.data.event.sameDaySelect,
+  //             'events.$.albumSelect': req.body.data.event.albumSelect,
+  //             'events.$.albumArray': req.body.data.event.albumArray,
+  //             'events.$.promoSelect': req.body.data.event.promoSelect,
+
+  //             'events.$.longFilmSelect': req.body.data.event.longFilmSelect,
+  //             'events.$.reelsSelect': req.body.data.event.reelsSelect,
+
+  //             'events.$.harddriveSelect': req.body.data.event.harddriveSelect,
+  //             'events.$.eventType': req.body.data.event.eventType,
+  //             'events.$.clientSuggestions':
+  //               req.body.data.event.clientSuggestions,
+  //             'events.$.dates': req.body.data.event.dates,
+  //             'events.$.droneFlyerName': req.body.data.event.droneFlyerName,
+  //             'events.$.photoGrapherName': req.body.data.event.photoGrapherName,
+  //             'events.$.cinematoGrapherName':
+  //               req.body.data.event.cinematoGrapherName,
+  //             'events.$.shootDirectorName':
+  //               req.body.data.event.shootDirectorName,
+  //             'events.$.managerName': req.body.data.event.managerName,
+  //             'events.$.assistantName': req.body.data.event.assistantName,
+  //           },
+  //         }
+  //       );
+  //       console.log(dataUpdated, 'dataupdatede');
+  //       const updatedData = {
+  //         _id: data._id,
+  //         locationSelect: locationSelect,
+  //         travelBySelect: travelBySelect,
+  //         photoGrapher: photoGrapher,
+  //         CinematographerSelect: CinematographerSelect,
+  //         droneSelect: droneSelect,
+  //         sameDaySelect: sameDaySelect,
+  //         albumSelect: albumSelect,
+  //         albumArray: albumArray,
+  //         promoSelect: promoSelect,
+  //         longFilmSelect: longFilmSelect,
+  //         reelsSelect: reelsSelect,
+  //         harddriveSelect: harddriveSelect,
+  //         eventType: eventType,
+  //         clientSuggestions: clientSuggestions,
+  //         dates: dates,
+  //         droneFlyerName: droneFlyerName,
+  //         photoGrapherName: photoGrapherName,
+  //         cinematoGrapherName: cinematoGrapherName,
+  //         shootDirectorName: shootDirectorName,
+  //         managerName: managerName,
+  //         assistantName: assistantName,
+  //       };
+  //       console.log(updatedData, 'updatedclients');
+  //       //  const updatedClients = await addClientSchema.findById(_id:);
+  //       //  console.log(updatedClients,"updatedClient")
+  //     }
+  //     // const eventData=req.body.events.filter((data)=>{
+  //     //   console.log(data,"data")
+  //     // })
+  //     // console.log(eventData,"eventData")
+  //   }
+  //   // const  clientEventsa=await clientEvents.events.findById({
+  //   //   _id:req.body.data.eventId
+  //   // })
+  //   // console.log(clientEvents, 'clientEventssa');
+  // } catch (error) {}
   // try {
   //   const clientEvents = await addClientSchema.find({
   //     userID: req.params.id,
@@ -266,7 +381,7 @@ const preWeddingShoot = async (req, res) => {
   try {
     const data = await addClientSchema.find({
       userID: req.params.id,
-      checkBox:[]
+      checkBox: [],
     });
     console.log(data, 'data');
     res.status(200).json(data);
@@ -281,5 +396,5 @@ module.exports = {
   postClientListViewController,
   clientSpecificEvents,
   preWeddingShoot,
-  managerList
+  managerList,
 };
