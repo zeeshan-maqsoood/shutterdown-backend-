@@ -7,6 +7,7 @@ const previewClientRouter = require('./Routes/MyProfileRoutes');
 const MyProfileRouter = require('./Routes/userRoutes');
 const GetCalenderListRoutes = require('./Routes/GetCalenderListRoutes');
 const ClientListViewRouter = require('./Routes/ClientListVIewRoutes');
+const ShooterRouter=require('./Routes/ShooterRoutes')
 // const ListViewSave = require('./Routes/ListViewSaveRoutes');
 const ClientViewRouter = require('./Routes/CalenderViewRoutes');
 const DeliverableRouter=require('./Routes/DeliverableRoutes')
@@ -44,6 +45,7 @@ app.use("/",CalenderRouter)
 // app.use("/",ListViewSave)
 app.use("/",DeliverableRouter)
 app.use("/",DailyTaskRouter)
+app.use("/",ShooterRouter)
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });

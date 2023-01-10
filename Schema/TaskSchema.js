@@ -13,7 +13,12 @@ const taskSchema=mongoose.Schema({
         type:String
     },
     assignTo:{
-        type:String
+        name:{
+            type:String
+        },
+        id:{
+            type:String
+        }
     },
     assignBy:{
         type:String

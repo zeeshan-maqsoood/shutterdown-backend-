@@ -1,5 +1,33 @@
 const addClientSchema = require('../Schema/AddClientSchema');
 const userSchema = require('../Schema/userSchema');
+const taskSchema=require('../Schema/TaskSchema')
+var events = require('events');
+
+  // console.log(data,"data")
+  // const finalFilterData = data.filter((filterData, index) => {
+  //   filterData.events.filter((data) => {
+  //     // console.log(data,"filterData")
+  //     data?.photoGrapherName?.map(async (id) => {
+  //       let idArray = id.id;
+  //       console.log(idArray, index, 'idArray');
+  //       const data1 = await addClientSchema.find({
+  //         'events.photoGrapherName.id': { $eq: idArray },
+  //       });
+  //       console.log(data1, 'data1');
+  //     });
+  //   });
+  // });
+  //  console.log(finalFilterData,"finalFilterData")
+  //  console.log(data[0].events[0].droneFlyerName,"data")
+  // data.filter((data)=>{
+  //   console.log(data.events.filter((filterData)=>{
+  //     console.log(filterData.droneFlyerName.filter((drone)=>{
+  //       console.log(drone,"drone")
+  //     }),"filterData")
+  //   }),"data")
+  // })
+
+//
 const ClientListViewController = async (req, res) => {
   console.log(req.params, 'parmas');
   try {
@@ -12,7 +40,7 @@ const ClientListViewController = async (req, res) => {
     let data = [];
     for (let i = 0; i < shooterData.length; i++) {
       data.push({
-        _id:shooterData[i]._id,
+        _id: shooterData[i]._id,
         firstName: shooterData[i].firstName,
         lastName: shooterData[i].lastName,
         email: shooterData[i].email,
@@ -28,7 +56,7 @@ const ClientListViewController = async (req, res) => {
     let data_ = [];
     for (let i = 0; i < managerData.length; i++) {
       data_.push({
-        _id:managerData[i]._id,
+        _id: managerData[i]._id,
         firstName: managerData[i].firstName,
         lastName: managerData[i].lastName,
         email: managerData[i].email,

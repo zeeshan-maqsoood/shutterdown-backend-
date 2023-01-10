@@ -1,4 +1,5 @@
  const { findByIdAndUpdate } = require('../Schema/userSchema')
+ const clientSchema=require('../Schema/AddClientSchema')
 const userModel=require('../Schema/userSchema')
 
 const ProfileHeaderFunction=async(req,res)=>{
@@ -152,10 +153,21 @@ try {
   res.status(404).json("not posted")
 }
 }
-
+const clientData=async(req,res)=>{
+  console.log(req.params.id,"clientBody")
+try {
+  
+  const clientData=await clientSchema.find({userID:req.params.id})
+  console.log(clientData,"clientData")
+  res.status(200).json(clientData)
+} catch (error) {
+  console.log(error,"error")
+}
+}
 module.exports = {
   ProfileHeaderFunction,
   UpdateManagerFunction,
   ProfileUpdateFunction,
-  jobValueFunction
+  jobValueFunction,
+  clientData
 };
