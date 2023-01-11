@@ -100,7 +100,24 @@ const SignInPostRequest = async (req, res) => {
       }
     }else{
       const UserData=await userModel.findOne({email:req.body.data})
-     res.status(200).json({Message:"Created Successfully",User:{firsName:UserData.firstName,lastName:UserData.lastName,email:UserData.email,rollSelect:UserData.rollSelect,_id:UserData._id}})
+      console.log(UserData,"UserData")
+      if (UserData===null) {
+        res.status(200).json(UserData)
+      }else if (UserData!==null) {
+           res
+             .status(200)
+             .json({
+               Message: 'Created Successfully',
+               User: {
+                 firsName: UserData.firstName,
+                 lastName: UserData.lastName,
+                 email: UserData.email,
+                 rollSelect: UserData.rollSelect,
+                 _id: UserData._id,
+               },
+             });
+      }
+  
     }
     
   } catch (error) {
