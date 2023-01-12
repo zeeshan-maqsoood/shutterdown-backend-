@@ -37,6 +37,9 @@ const dummySchema = mongoose.Schema({
   harddriveSelect: {
     type: String,
   },
+  tentative:{
+    type:String
+  },
   eventType: {
     type: String,
   },

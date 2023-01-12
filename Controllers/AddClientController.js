@@ -35,7 +35,7 @@ const AddClientFunction = async (req, res) => {
 };
 
 const AddMoreClientFunction = async (req, res) => {
-  console.log(req.body,"addclentBody")
+  console.log(req.body.data.info1,"addclentBody")
   console.log(req.body.data.info2,"body")
   
   try {
@@ -45,7 +45,7 @@ const AddMoreClientFunction = async (req, res) => {
       Groom_Name,
       Bride_s_House_Address,
       Groom_s_House_Address,
-      Email_Id,
+      EmailID,
       phone_Number,
       Booking_confirmed,
       Payment_Status,
@@ -101,7 +101,7 @@ const AddMoreClientFunction = async (req, res) => {
       Groom_Name,
       Bride_s_House_Address,
       Groom_s_House_Address,
-      Email_Id,
+      EmailID,
       phone_Number,
       Booking_confirmed,
       Payment_Status,

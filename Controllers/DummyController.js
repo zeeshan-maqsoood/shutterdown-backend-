@@ -1,7 +1,7 @@
 const DummySchema=require("../Schema/DummySchema")
-
+const dayjs=require("dayjs")
 const DummyTableFunction = async (req, res) => {
-  // console.log(req.body,"body")
+  console.log(req.body.data.form2Data[0],"body")
   const array1=[req.body.data.form2Data[0]]
   const array = [];
   console.log(array1,"array1");
@@ -21,6 +21,7 @@ const DummyTableFunction = async (req, res) => {
     longFilmSelect,
     reelsSelect,
     harddriveSelect,
+    tentative,
     eventType,
     radioDeliverables,
     clientSuggestions,
@@ -51,10 +52,11 @@ const DummyTableFunction = async (req, res) => {
       longFilmSelect,
       reelsSelect,
       harddriveSelect,
+      tentative,
       eventType,
       radioDeliverables,
       clientSuggestions,
-      dates,
+      dates:dayjs(dates).format("YYYY-MM-DD"),
       droneFlyerName,
       photoGrapherName,
       cinematoGrapherName,
