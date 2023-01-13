@@ -1,31 +1,31 @@
 const addClientSchema = require('../Schema/AddClientSchema');
 const userSchema = require('../Schema/userSchema');
-const taskSchema=require('../Schema/TaskSchema')
+const taskSchema = require('../Schema/TaskSchema');
 var events = require('events');
 
-  // console.log(data,"data")
-  // const finalFilterData = data.filter((filterData, index) => {
-  //   filterData.events.filter((data) => {
-  //     // console.log(data,"filterData")
-  //     data?.photoGrapherName?.map(async (id) => {
-  //       let idArray = id.id;
-  //       console.log(idArray, index, 'idArray');
-  //       const data1 = await addClientSchema.find({
-  //         'events.photoGrapherName.id': { $eq: idArray },
-  //       });
-  //       console.log(data1, 'data1');
-  //     });
-  //   });
-  // });
-  //  console.log(finalFilterData,"finalFilterData")
-  //  console.log(data[0].events[0].droneFlyerName,"data")
-  // data.filter((data)=>{
-  //   console.log(data.events.filter((filterData)=>{
-  //     console.log(filterData.droneFlyerName.filter((drone)=>{
-  //       console.log(drone,"drone")
-  //     }),"filterData")
-  //   }),"data")
-  // })
+// console.log(data,"data")
+// const finalFilterData = data.filter((filterData, index) => {
+//   filterData.events.filter((data) => {
+//     // console.log(data,"filterData")
+//     data?.photoGrapherName?.map(async (id) => {
+//       let idArray = id.id;
+//       console.log(idArray, index, 'idArray');
+//       const data1 = await addClientSchema.find({
+//         'events.photoGrapherName.id': { $eq: idArray },
+//       });
+//       console.log(data1, 'data1');
+//     });
+//   });
+// });
+//  console.log(finalFilterData,"finalFilterData")
+//  console.log(data[0].events[0].droneFlyerName,"data")
+// data.filter((data)=>{
+//   console.log(data.events.filter((filterData)=>{
+//     console.log(filterData.droneFlyerName.filter((drone)=>{
+//       console.log(drone,"drone")
+//     }),"filterData")
+//   }),"data")
+// })
 
 //
 const ClientListViewController = async (req, res) => {
@@ -421,10 +421,93 @@ const preWeddingShoot = async (req, res) => {
     res.status(404).json(error, 'error');
   }
 };
+
+const preWeddingShootupdate = async (req, res) => {
+  console.log(req.params, 'params');
+  console.log(req.body.i, 'body');
+
+  try {
+    const preWeddingData = await addClientSchema.findOne(
+      { 'events._id': { $eq: req.body.data._id } }
+      // {
+      //   locationSelect: req.body.data.locationSelect,
+      //   travelBySelect: req.body.data.travelBySelect,
+      //   photoGrapher: req.body.data.photoGrapher,
+      //   CinematoGrapherSelect: req.body.data.CinematoGrapherSelect,
+      //   droneSelect: req.body.data.droneSelect,
+      //   sameDaySelect: req.body.data.sameDaySelect,
+      //   status:req.body.i,
+      //   albumSelect: req.body.data.albumSelect,
+      //   albumArray: req.body.data.albumArray,
+      //   promoSelect: req.body.data.promoSelect,
+      //   longFilmSelect: req.body.data.promoSelect,
+      //   reelsSelect: req.body.data.reelsSelect,
+      //   eventType: req.body.data.eventType,
+      //   checkboxValues: req.body.data.checkboxValues,
+      //   clientSuggestions: req.body.data.clientSuggestions,
+      //   dates: req.body.data.dates,
+      //   sameVideoSelect: req.body.data.sameVideoSelect,
+      //   droneFlyerName: req.body.data.droneFlyerName,
+      //   photoGrapherName: req.body.data.photoGrapherName,
+      //   cinematoGrapherName: req.body.data.cinematoGrapherName,
+      //   shootDirectorName: req.body.data.shootDirectorName,
+      //   managerName: req.body.data.managerName,
+      //   assistantName: req.body.data.assistantName,
+
+      // }
+    );
+    
+//     const mapMethod=preWeddingData[0].events.filter((event)=>{
+// const id=event._id===req.params.id
+// console.log(id,"id")
+//       console.log(event._id===req.params.id)
+//       // console.log(id,"iddd")
+//     }
+//    )
+//     console.log(mapMethod,"mapMethod")
+    const data = preWeddingData.events.filter((data) => data._id);
+    const id = data.filter((id) => id);
+
+    const ids = id.filter((id) => id._id === req.params.id);
+   
+     ids[0]. locationSelect= req.body.data.locationSelect,
+     ids[0]. travelBySelect= req.body.data.travelBySelect,
+      ids[0].photoGrapher= req.body.data.photoGrapher,
+      ids[0].CinematographerSelect= req.body.data.CinematoGrapherSelect,
+      ids[0].droneSelect= req.body.data.droneSelect,
+      ids[0].sameDaySelect= req.body.data.sameDaySelect,
+      ids[0].status=req.body.i,
+      ids[0].albumSelect= req.body.data.albumSelect,
+      ids[0].albumArray= req.body.data.albumArray,
+      ids[0].promoSelect= req.body.data.promoSelect,
+      ids[0].longFilmSelect= req.body.data.promoSelect,
+      ids[0].reelsSelect= req.body.data.reelsSelect,
+      ids[0].eventType= req.body.data.eventType,
+      ids[0].checkboxValues= req.body.data.checkboxValues,
+      ids[0].clientSuggestions= req.body.data.clientSuggestions,
+      ids[0].dates= req.body.data.dates,
+      ids[0].sameVideoSelect= req.body.data.sameVideoSelect,
+      ids[0].droneFlyerName= req.body.data.droneFlyerName,
+      ids[0].photoGrapherName= req.body.data.photoGrapherName,
+      ids[0].cinematoGrapherName= req.body.data.cinematoGrapherName,
+      ids[0].shootDirectorName= req.body.data.shootDirectorName,
+      ids[0].managerName= req.body.data.managerName,
+      ids[0].assistantName= req.body.data.assistantName
+      // console.log(ids,"ids")
+      const datass=await addClientSchema.findOne({'events._id':{$eq:ids[0]._id}})
+    
+      // console.log(preWeddingData,"preWeddingData")
+    // res.status(200).json(preWeddingData);
+    // console.log(preWeddingData,"preWeddingData");
+  } catch (error) {
+    console.log(error, 'error');
+  }
+};
 module.exports = {
   ClientListViewController,
   postClientListViewController,
   clientSpecificEvents,
   preWeddingShoot,
   managerList,
+  preWeddingShootupdate,
 };

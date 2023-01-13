@@ -64,7 +64,8 @@ const DummyTableFunction = async (req, res) => {
       managerName,
       assistantName,
       sameVideoSelect,
-      checkboxValues
+      checkboxValues,
+      status:""
     });
    
     
@@ -111,12 +112,14 @@ console.log(req.params.id,"params")
     eventType,
     clientSuggestions,
     sameDaySelect,
+    status,
     droneFlyerName,
     photoGrapherName,
     cinematoGrapherName,
     shootDirectorName,
     managerName,
     assistantName,
+    
   } = req.body.data.updatedData;
   const dummyTable = await DummySchema.findById(
     { _id: req.body.data.id }
