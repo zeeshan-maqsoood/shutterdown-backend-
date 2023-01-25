@@ -2,9 +2,11 @@ const AddClientSchema = require('../Schema/AddClientSchema');
 const userSchema = require('../Schema/userSchema');
 const ClientModel = require('../Schema/AddCalenderViewSchema');
 const photoGrapherModel = require('../Schema/DeliverablesPhotographerSchema');
+const DeliverableCinematoGrapher = require('../Schema/DeliverableCinematographerSchema');
 const DeliverableAlbumModel = require('../Schema/DeliverableAlbumSchema');
 const getCinematographerData = async (req, res) => {
-  console.log(req.params);
+  console.log(req.params, 'dfddjfodf');
+
   try {
     const CinematoGrapherData = await AddClientSchema.find({
       userID: req.params.id,
@@ -71,45 +73,85 @@ const albumsData = async (req, res) => {
 const DeliverableDataPost = async (req, res) => {
   console.log(req.body, 'body');
   try {
-    const DeliverableIdData = await ClientModel.findOne({
+    const DeliverableData = await DeliverableCinematoGrapher.find({
       eventsId: req.body.data.eventsId,
     });
-    console.log(DeliverableIdData, 'DeliverableIdData');
-    if (DeliverableIdData) {
-      const DeliverableId = await ClientModel.findOneAndUpdate(
-        { eventsId: req.body.data.userID },
+    console.log(DeliverableData, 'DeliverableData1');
+    if (DeliverableData.length === 0) {
+      const postDeliverableData = await DeliverableCinematoGrapher({
+        userID: req.body.data.userID,
+        eventsId: req.body.data.eventsId,
+        Client: req.body.data.client,
+        EditorId: req.body.data.EditorId,
+        Editor: req.body.data.Editor,
+        WeddingDate: req.body.data.weddingDate,
+        companyDate: req.body.data.CompanyDate,
+        ClientDate: req.body.data.clientDate,
+        Status: req.body.data.status.title,
+        ClientRevision: req.body.data.clientRevision,
+        suggestion: req.body.data.suggestion,
+      });
+      await postDeliverableData.save();
+    } else {
+      const DeliverableId = await DeliverableCinematoGrapher.findOneAndUpdate(
+        { eventsId: req.body.data.eventsId },
         {
           userID: req.body.data.userID,
           eventsId: req.body.data.eventsId,
-          client: req.body.data.client,
+          Client: req.body.data.client,
+          EditorId: req.body.data.EditorId,
           Editor: req.body.data.Editor,
           WeddingDate: req.body.data.weddingDate,
           companyDate: req.body.data.CompanyDate,
           ClientDate: req.body.data.clientDate,
-          Status: req.body.data.status,
+          Status: req.body.data.status.title,
           ClientRevision: req.body.data.clientRevision,
+          suggestion: req.body.data.suggestion,
         }
       );
       console.log(DeliverableId, 'DeliverableId');
       //  await DeliverableUpdatedData.save();
       res.status(200).json('successfully assigned');
-    } else {
-      const postDeliverableData = await ClientModel({
-        userID: req.body.data.userID,
-        eventsId: req.body.data.eventsId,
-        client: req.body.data.client,
-        Editor: req.body.data.Editor,
-        WeddingDate: req.body.data.weddingDate,
-        companyDate: req.body.data.CompanyDate,
-        ClientDate: req.body.data.clientDate,
-        Status: req.body.data.status,
-        ClientRevision: req.body.data.clientRevision,
-      });
-      await postDeliverableData.save();
     }
-    console.log(DeliverableIdData, 'DeliverableDataId');
+    // const DeliverableIdData = await ClientModel.findOne({
+    //   eventsId: req.body.data.eventsId,
+    // });
+    // console.log(DeliverableIdData, 'DeliverableIdData');
+    // if (DeliverableIdData!==null) {
+    //   const DeliverableId = await ClientModel.findOneAndUpdate(
+    //     { eventsId: req.body.data.userID },
+    //     {
+    //       userID: req.body.data.userID,
+    //       eventsId: req.body.data.eventsId,
+    //       client: req.body.data.client,
+    //       Editor: req.body.data.Editor,
+    //       WeddingDate: req.body.data.weddingDate,
+    //       companyDate: req.body.data.CompanyDate,
+    //       ClientDate: req.body.data.clientDate,
+    //       Status: req.body.data.status,
+    //       ClientRevision: req.body.data.clientRevision,
+    //     }
+    //   );
+    //   console.log(DeliverableId, 'DeliverableId');
+    //   //  await DeliverableUpdatedData.save();
+    //   res.status(200).json('successfully assigned');
+    // } else {
+    //   const postDeliverableData = await ClientModel({
+    //     userID: req.body.data.userID,
+    //     eventsId: req.body.data.eventsId,
+    //     client: req.body.data.client,
+    //     Editor: req.body.data.Editor,
+    //     WeddingDate: req.body.data.weddingDate,
+    //     companyDate: req.body.data.CompanyDate,
+    //     ClientDate: req.body.data.clientDate,
+    //     Status: req.body.data.status,
+    //     ClientRevision: req.body.data.clientRevision,
+    //   });
+    //   await postDeliverableData.save();
+    // }
+    // console.log(DeliverableIdData, 'DeliverableDataId');
 
-    console.log(DeliverableIdData, 'DeliverableData');
+    // console.log(DeliverableIdData, 'DeliverableData');
   } catch (error) {
     console.log(error, 'error');
   }
@@ -161,38 +203,46 @@ const PhotosDeliverableData = async (req, res) => {
   console.log(req.body, 'body');
 
   try {
-    const PhotoDeliverableDataId = await photoGrapherModel.findOne({
+    const PhotoDeliverableDataId = await photoGrapherModel.find({
       eventsId: req.body.data.eventsId,
     });
     console.log(PhotoDeliverableDataId, 'photoDeliverableId');
-    if (PhotoDeliverableDataId) {
-      const PhotoDeliverableData = await photoGrapherModel.findByIdAndUpdate(
+
+    if (PhotoDeliverableDataId.length === 0) {
+      console.log(PhotoDeliverableDataId.length === 0);
+      const PostPhotoDeliverableDataId = await photoGrapherModel({
+        userID: req.body.data.userID,
+        eventsId: req.body.data.eventsId,
+        client: req.body.data.client,
+        EditorId: req.body.data.EditorId,
+        Editor: req.body.data.Editor,
+        WeddingDate: req.body.data.weddingDate,
+        companyDate: req.body.data.companyDate,
+        clientDate: req.body.data.clientDate,
+        Status: req.body.data.status.title,
+        ClientRevision: req.body.data.clientRevision,
+        Suggestion: req.body.data.suggestion,
+      });
+
+      await PostPhotoDeliverableDataId.save();
+    } else {
+      console.log('no');
+      const PhotoDeliverableData = await photoGrapherModel.findOneAndUpdate(
         { eventsId: req.body.data.eventsId },
         {
           userID: req.body.data.userID,
           eventsId: req.body.data.eventsId,
           client: req.body.data.client,
+          EditorId: req.body.data.EditorId,
           Editor: req.body.data.Editor,
           WeddingDate: req.body.data.weddingDate,
           companyDate: req.body.data.companyDate,
           clientDate: req.body.data.clientDate,
-          Status: req.body.data.status,
-          ClientRevision: req.body.data.clientRevison,
+          Status: req.body.data.status.title,
+          ClientRevision: req.body.data.clientRevision,
+          Suggestion: req.body.data.suggestion,
         }
       );
-    } else {
-      const PhotoDeliverableData = await photoGrapherModel({
-        userID: req.body.data.userID,
-        eventsId: req.body.data.eventsId,
-        client: req.body.data.client,
-        Editor: req.body.data.Editor,
-        WeddingDate: req.body.data.weddingDate,
-        companyDate: req.body.data.companyDate,
-        clientDate: req.body.data.clientDate,
-        Status: req.body.data.status,
-        ClientRevision: req.body.data.clientRevison,
-      });
-      await PhotoDeliverableData.save();
     }
     // const photoDeliverableData = await photoGrapherModel({
 
@@ -209,7 +259,8 @@ const PhotosDeliverableData = async (req, res) => {
     // });
     // await photoDeliverableData.save();
     res.status(200).json('successfully assigned');
-    console.log(photoDeliverableData, 'photoDeliverableData');
+    // await PhotoDeliverableDataId.save();
+    console.log(PhotoDeliverableDataId, 'photoDeliverableData');
   } catch (error) {}
   //   try {
   //  const PhotosDeliverableData = await photoGrapherModel.find();
@@ -264,34 +315,38 @@ const PhotosDeliverableData = async (req, res) => {
 const AlbumsPostData = async (req, res) => {
   console.log(req.body, 'body');
   try {
-    const AlbumId = await DeliverableAlbumModel.findOne({
+    const AlbumId = await DeliverableAlbumModel.find({
       eventsId: req.body.data.eventsId,
     });
 
-    if (AlbumId) {
+    if (AlbumId.length === 0) {
       console.log('first Run');
+      const AlbumsPostDatas = await DeliverableAlbumModel({
+        userID: req.body.data.userID,
+        eventsId: req.body.data.eventsId,
+        client: req.body.data.client,
+        EditorId: req.body.data.EditorId,
+        WeddingDate: req.body.data.WeddingDate,
+        Editor: req.body.data.Editor,
+        Status: req.body.data.status.title,
+        Suggestion: req.body.data.suggestion,
+      });
+
+      await AlbumsPostDatas.save();
+    } else {
       const AlbumUpdateData = await DeliverableAlbumModel.findOneAndUpdate(
         { eventsId: req.body.data.eventsId },
         {
           userID: req.body.data.userID,
           eventsId: req.body.data.eventsId,
-          // client: req.body.data.client,
+          client: req.body.data.client,
+          EditorId: req.body.data.EditorId,
+          WeddingDate: req.body.data.WeddingDate,
           Editor: req.body.data.Editor,
-          Status: req.body.data.status,
+          Status: req.body.data.status.title,
+          Suggestion: req.body.data.suggestion,
         }
       );
-      await AlbumUpdateData.save();
-    } else {
-      console.log('second Run');
-      const AlbumsPostDatas = await DeliverableAlbumModel({
-        userID: req.body.data.userID,
-        eventsId: req.body.data.eventsId,
-        // client: req.body.data.client,
-        Editor: req.body.data.Editor,
-        Status: req.body.data.status,
-      });
-      await AlbumsPostDatas.save();
-      console.log(AlbumsPostData, 'AlbumsPostData');
     }
   } catch (error) {}
 };
@@ -307,17 +362,51 @@ const DeliverableData = async (req, res) => {
     const albumsData = await DeliverableAlbumModel.findOne({
       userID: req.params.id,
     });
-    res
-      .status(200)
-      .json({
-        cinematoGrapherData: cinematoGrapherData,
-        PhotoGrapherData: PhotoGrapherData,
-        albumsData: albumsData,
-      });
+    res.status(200).json({
+      cinematoGrapherData: cinematoGrapherData,
+      PhotoGrapherData: PhotoGrapherData,
+      albumsData: albumsData,
+    });
   } catch (error) {
     res.status(404).json(error);
   }
 };
+
+const editorCinematoGraphyData = async (req, res) => {
+  console.log(req.params, 'paramssssadsdsd');
+  try {
+    const cinematoGrapherData = await DeliverableCinematoGrapher.find({
+      EditorId: req.params.id,
+    });
+    console.log(cinematoGrapherData, 'cinematoGrapherData');
+    res.status(200).json(cinematoGrapherData);
+  } catch (error) {}
+};
+const EditorPhotosData = async (req, res) => {
+  console.log(req.params,"parmasss")
+  try {
+    const PhotosData = await photoGrapherModel.find({
+      EditorId: req.params.id,
+    });
+    console.log(PhotosData,"photosData")
+    res.status(200).json(PhotosData);
+  } catch (error) {}
+};
+
+const EditorAlbumsData = async (req, res) => {
+  console.log(req.params, 'params');
+  try {
+    const albumsData = await DeliverableAlbumModel.find({
+      EditorId: req.params.id,
+    });
+    console.log(albumsData, 'albumsData');
+    res.status(200).json(albumsData)
+  } catch (error) {
+
+    res.status(505).json("NOt INclude")
+  }
+};
+
 module.exports = {
   getCinematographerData,
   getEditorRule,
@@ -328,4 +417,7 @@ module.exports = {
   PhotosDeliverableData,
   AlbumsPostData,
   DeliverableData,
+  editorCinematoGraphyData,
+  EditorPhotosData,
+  EditorAlbumsData,
 };

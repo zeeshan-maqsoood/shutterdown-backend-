@@ -9,20 +9,29 @@ const CalenderData = mongoose.Schema({
     eventsId: {
       type: String,
     },
-    // client: {
-    //  BrideName:{
-    //     type:String
-    //  },
-    //  GroomName:{
-    //     type:String
-    //  }
-    // },
+    client: {
+     BrideName:{
+        type:String
+     },
+     GroomName:{
+        type:String
+     }
+    },
+    EditorId:{
+      type:String
+    },
+    WeddingDate:{
+      type:String
+    },
     Editor: {
       type: String,
     },
     Status: {
       type: String,
     },
+    Suggestion:{
+      type:String
+    }
   
 });
 

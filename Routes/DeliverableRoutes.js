@@ -1,9 +1,11 @@
-const express=require("express")
-const router=express.Router()
-const delivarableController=require("../Controllers/DeliverableController")
+const express = require('express');
+const router = express.Router();
+const delivarableController = require('../Controllers/DeliverableController');
 
-
-router.get('/MyProfile/Deliverables/Cinematography/:id',delivarableController.getCinematographerData);
+router.get(
+  '/MyProfile/Deliverables/Cinematography/:id',
+  delivarableController.getCinematographerData
+);
 router.get(
   '/MyProfile/Deliverables/Cinematography',
   delivarableController.getEditorRule
@@ -24,6 +26,15 @@ router.post(
   '/MyProfile/Deliverables/Photos',
   delivarableController.PhotosDeliverableData
 );
-router.post('/MyProfile/Deliverables/Albums',delivarableController.AlbumsPostData)
-router.get('/MyProfile/Client/ParticularClient/Deliverable/:id',delivarableController.DeliverableData);
-module.exports=router
+router.post(
+  '/MyProfile/Deliverables/Albums',
+  delivarableController.AlbumsPostData
+);
+router.get(
+  '/MyProfile/Client/ParticularClient/Deliverable/:id',
+  delivarableController.DeliverableData
+);
+router.get('/Deliverables/Cinematography/:id',delivarableController.editorCinematoGraphyData)
+router.get('/Deliverables/Photos/:id',delivarableController.EditorPhotosData)
+router.get('/Deliverables/Albums/:id',delivarableController.EditorAlbumsData)
+module.exports = router;

@@ -59,19 +59,17 @@ const RegisterPostRequest = async (req, res) => {
     } else {
       const email = await userModel.findOne({ email: req.body.data });
       console.log(email, 'email');
-      res
-        .status(200)
-        .json({
-          result: 'true',
-          message: 'user already exists',
-          User: {
-            firstName: email.firstName,
-            lastName: email.lastName,
-            email: email.email,
-            rollSelect: email.rollSelect,
-            _id: email._id,
-          },
-        });
+      res.status(200).json({
+        result: 'true',
+        message: 'user already exists',
+        User: {
+          firstName: email.firstName,
+          lastName: email.lastName,
+          email: email.email,
+          rollSelect: email.rollSelect,
+          _id: email._id,
+        },
+      });
     }
   } catch (error) {
     res.status(404).json('Invalid Credentials');
@@ -98,28 +96,24 @@ const SignInPostRequest = async (req, res) => {
       } else {
         res.status(404).json({ message: 'Invalid Credidfjdfdsf' });
       }
-    }else{
-      const UserData=await userModel.findOne({email:req.body.data})
-      console.log(UserData,"UserData")
-      if (UserData===null) {
-        res.status(200).json(UserData)
-      }else if (UserData!==null) {
-           res
-             .status(200)
-             .json({
-               Message: 'Created Successfully',
-               User: {
-                 firsName: UserData.firstName,
-                 lastName: UserData.lastName,
-                 email: UserData.email,
-                 rollSelect: UserData.rollSelect,
-                 _id: UserData._id,
-               },
-             });
+    } else {
+      const UserData = await userModel.findOne({ email: req.body.data });
+      console.log(UserData, 'UserData');
+      if (UserData === null) {
+        res.status(200).json(UserData);
+      } else if (UserData !== null) {
+        res.status(200).json({
+          Message: 'Created Successfully',
+          User: {
+            firsName: UserData.firstName,
+            lastName: UserData.lastName,
+            email: UserData.email,
+            rollSelect: UserData.rollSelect,
+            _id: UserData._id,
+          },
+        });
       }
-  
     }
-    
   } catch (error) {
     res.status(404).json('invalid Credentials');
   }
@@ -161,12 +155,11 @@ const newPassword = async (req, res) => {
   }
 };
 const getExistEmail = async (req, res) => {
-   console.log(req.body,"body")
-   try {
-     const email=await userModel.findOne({email:req.body.data})
-   console.log(email,'email')
- } catch (error) {
-   }
+  console.log(req.body, 'body');
+  try {
+    const email = await userModel.findOne({ email: req.body.data });
+    console.log(email, 'email');
+  } catch (error) {}
 };
 module.exports = {
   RegisterPostRequest,
