@@ -11,7 +11,7 @@ const AttendenceSchema=mongoose.Schema({
         type:String
     },
     daysSelected:{
-        type:Array
+        type:Object
     }
 
 })

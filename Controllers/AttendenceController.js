@@ -20,7 +20,6 @@ const PostAttendenceData=async(req,res)=>{
         const UserAttendence=await AttendenceSchema.find({
             userID:req.body.data.userID
         })
-        console.log(UserAttendence===[])
         if (UserAttendence.length===0) {
           const UserAttendenceData=await AttendenceSchema({
                 userID:req.body.data.userID,
