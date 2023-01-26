@@ -7,4 +7,5 @@ const AttendenceController = require('../Controllers/AttendenceController');
 // );
 router.post('/MyProfile/AttendenceSettings',AttendenceController.PostAttendenceData)
 router.get('/MyProfile/AttendenceSettings/:id',AttendenceController.getAttendenceData)
+router.get('/MyProfile/Attendence/:id',AttendenceController.managerAttendenceData)
 module.exports = router;

@@ -1,5 +1,6 @@
 const userModel=require('../Schema/userSchema')
 const AttendenceSchema=require('../Schema/AttendenceSchema')
+const EditorShooterModel=require('../Schema/EditorShooterAttendenceSchema')
 const EditorData=async(req,res)=>{
     console.log("function Calls")
     console.log(req.params,"paramsss")
@@ -65,4 +66,17 @@ try {
     res.status(500).json(error)
 }
 }
-module.exports={ EditorData,PostAttendenceData,getAttendenceData  } 
+
+const managerAttendenceData=async(req,res)=>{
+    console.log(req.params,"paramsdfsdfsdfsdfsdf")
+    try {
+        const AttendenceData=await EditorShooterModel.find()
+        const ShooterData=await userModel.find({rollSelect:"Shooter"})
+        const EditorData=await userModel.find({rollSelect:"Editor"})
+        res.status(200).json({AttendenceData:AttendenceData,ShooterData:ShooterData,EditorData:EditorData})
+    } catch (error) {
+        
+    }
+}
+
+module.exports={ EditorData,PostAttendenceData,getAttendenceData,managerAttendenceData  } 

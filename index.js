@@ -14,6 +14,7 @@ const ClientViewRouter = require('./Routes/CalenderViewRoutes');
 const DeliverableRouter = require('./Routes/DeliverableRoutes');
 const DailyTaskRouter = require('./Routes/DailyTaskRoutes');
 const AttendenceRouter = require('./Routes/AttendenceRoutes');
+const ShooterEditorRouter = require('./Routes/EditorShooterRoutes');
 const Database = require('./DataBase/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -48,6 +49,7 @@ app.use('/', DailyTaskRouter);
 app.use('/', ShooterRouter);
 app.use('/', checkListRouter);
 app.use('/', AttendenceRouter);
+app.use('/', ShooterEditorRouter);
 // app.get('/', (req, res) => {
 //   res.send('Hello world');
 // });
