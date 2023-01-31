@@ -43,6 +43,14 @@ const ShooterTaskView=async(req,res)=>{
         
     }
 }
+const EditorTaskView=async(req,res)=>{
+try {
+    const data=await taskSchema.find({'assignTo.id':{$eq:req.params.id}})
+   res.status(200).json(data)
+} catch (error) {
+    console.log(error,"error")
+}
+}
 
 
-module.exports={ShooterCalenderView,ShooterTaskView}
+module.exports={ShooterCalenderView,ShooterTaskView,EditorTaskView}

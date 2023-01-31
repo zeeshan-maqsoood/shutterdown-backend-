@@ -6,4 +6,5 @@ router.get(
   ShooterController.ShooterCalenderView
 );
 router.get('/Photographer/DailyTasks/:id',ShooterController.ShooterTaskView)
+router.get('/Editor/DailyTasks/:id',ShooterController.EditorTaskView)
 module.exports = router;

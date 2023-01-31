@@ -4,7 +4,7 @@ const userSchema = require('../Schema/userSchema');
 const handleDailyTaskGetRequest = async (req, res) => {
   try {
     const ClientData = await addClientSchema.find({ userID: req.params.id });
-    const user = await userSchema.find({ rollSelect: 'Shooter' });
+    const user = await userSchema.find({ rollSelect: 'Editor' });
 
     res.status(200).json({ ClientData: ClientData, userData: user });
   } catch (error) {
@@ -51,14 +51,39 @@ const handleDailyTaskPostRequest = async (req, res) => {
 const getTaskData = async (req, res) => {
   try {
     const taskData = await taskSchema.find();
-    res.status(200).json(taskData);
+    const Editor=await userSchema.find({rollSelect:"Editor"})
+    const manager=await userSchema.find({rollSelect:"Manager"})
+    res.status(200).json({taskData:taskData,Editor:Editor,ManagerData:manager});
   } catch (error) {
     console.log(taskData, 'taskData');
   }
 };
-
+const updateTaskData=async(req,res)=>{
+  // console.log(req.params,"params")
+  // console.log(req.body,"body")
+  try {
+    const idData=await taskSchema.findById({_id:req.params.id})
+    console.log(idData.assignTo.id,"idData")
+    const data=await taskSchema.findByIdAndUpdate({_id:req.params.id},{
+      GroomName:req.body.data.client.BrideName,
+      GroomName:req.body.data.client.GroomName,
+      companyDate:req.body.data.companyDate,
+      completionDate:req.body.data.completionDate,
+      assignTo:{
+        name:idData.assignTo.name,
+        id:idData.assignTo.id
+      },
+      assignBy:req.body.data.assignBySelect,
+      taskName:req.body.data.taskName
+    })
+    res.status(200).json(data)
+  } catch (error) {
+    
+  }
+}
 module.exports = {
   handleDailyTaskGetRequest,
   handleDailyTaskPostRequest,
   getTaskData,
+  updateTaskData
 };
